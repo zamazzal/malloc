@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
+/*   By: zamazzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Created: 2018/10/10 17:35:25 by zamazzal          #+#    #+#             */
+/*   Updated: 2018/10/10 17:47:52 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "malloc.h"
+#include "libft.h"
 
-int		main(void)
+size_t		ft_nbrlen(int nb)
 {
-	char	*str;
-	int		len;
+	int		size;
 
-	str = ft_malloc(1024);
-	str = ft_malloc(1024);
-	str = ft_malloc(478);
-	show_alloc_mem();
-	return (0);
+	size = (nb <= 0) ? 1 : 0;
+	nb = (nb < 0) ? nb * -1 : nb;
+	while (nb)
+	{
+		nb = nb / 10;
+		size++;
+	}
+	return (size);
 }

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
+/*   By: zamazzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Created: 2018/10/05 12:33:34 by zamazzal          #+#    #+#             */
+/*   Updated: 2018/10/11 13:16:28 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "malloc.h"
+#include "libft.h"
 
-int		main(void)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	char	*str;
-	int		len;
+	size_t		i;
+	char		*f;
 
-	str = ft_malloc(1024);
-	str = ft_malloc(1024);
-	str = ft_malloc(478);
-	show_alloc_mem();
-	return (0);
+	i = 0;
+	f = (char*)b;
+	while (i < len)
+		f[i++] = ((char)c);
+	b = (void*)f;
+	return (b);
 }

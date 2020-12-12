@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
+/*   By: zamazzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Created: 2018/10/05 21:13:56 by zamazzal          #+#    #+#             */
+/*   Updated: 2018/10/11 15:55:33 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "malloc.h"
+#include "libft.h"
 
-int		main(void)
+int		ft_tolower(int c)
 {
-	char	*str;
-	int		len;
-
-	str = ft_malloc(1024);
-	str = ft_malloc(1024);
-	str = ft_malloc(478);
-	show_alloc_mem();
-	return (0);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }

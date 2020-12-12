@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
+/*   By: zamazzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Created: 2018/10/08 00:40:55 by zamazzal          #+#    #+#             */
+/*   Updated: 2018/10/11 17:19:29 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "malloc.h"
+#include "libft.h"
 
-int		main(void)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	char	*str;
-	int		len;
-
-	str = ft_malloc(1024);
-	str = ft_malloc(1024);
-	str = ft_malloc(478);
-	show_alloc_mem();
+	if (!s1 || !s2)
+		return (0);
+	if (ft_strncmp(s1, s2, n) == 0)
+		return (1);
 	return (0);
 }

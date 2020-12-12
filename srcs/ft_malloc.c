@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Created: 2020/12/12 20:13:06 by zamazzal          #+#    #+#             */
+/*   Updated: 2020/12/12 20:13:52 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-int		main(void)
+static void	*alloc_by_type(size_t size)
 {
-	char	*str;
-	int		len;
+	int		type;
+	void	*ptr;
 
-	str = ft_malloc(1024);
-	str = ft_malloc(1024);
-	str = ft_malloc(478);
-	show_alloc_mem();
-	return (0);
+	ptr = NULL;
+	type = ft_check_type(size);
+	if (type == TINY || type == SMALL)
+	{
+		if (!(ptr = create_in_existing_z(size, type)))
+			ptr = create_new_zone(size, type);
+	}
+	else
+		ptr = alloc_large_zone(size);
+	return (ptr);
+}
+
+void		*ft_malloc(size_t size)
+{
+	void *ptr;
+
+	ptr = alloc_by_type(size);
+	return (ptr);
 }

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
+/*   By: zamazzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Created: 2018/10/05 21:36:59 by zamazzal          #+#    #+#             */
+/*   Updated: 2018/10/11 13:52:02 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "malloc.h"
+#include "libft.h"
 
-int		main(void)
+char	*ft_strrchr(const char *s, int c)
 {
-	char	*str;
-	int		len;
+	size_t i;
 
-	str = ft_malloc(1024);
-	str = ft_malloc(1024);
-	str = ft_malloc(478);
-	show_alloc_mem();
-	return (0);
+	i = 0;
+	if (ft_strchr(s, c) == NULL)
+		return (NULL);
+	i = ft_strlen(s);
+	while (s[i] != c)
+		i--;
+	return ((char*)s + i);
 }

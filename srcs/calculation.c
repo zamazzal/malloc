@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   calculation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Created: 2020/12/12 18:16:09 by zamazzal          #+#    #+#             */
+/*   Updated: 2020/12/12 18:16:31 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-int		main(void)
+size_t	multipleof_pages(size_t size)
 {
-	char	*str;
-	int		len;
+	size_t page_size;
 
-	str = ft_malloc(1024);
-	str = ft_malloc(1024);
-	str = ft_malloc(478);
-	show_alloc_mem();
-	return (0);
+	page_size = getpagesize();
+	while (size % page_size != 0)
+		size++;
+	return (size);
+}
+
+size_t	ft_getlen(int type)
+{
+	size_t len;
+	size_t len_by_type;
+
+	len_by_type = get_size_bytype(type);
+	len = (len_by_type + sizeof(t_block)) * PREALLOC_SIZE;
+	len += sizeof(t_zones);
+	len = multipleof_pages(len);
+	return (len);
 }

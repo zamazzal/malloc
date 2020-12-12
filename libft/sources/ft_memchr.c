@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
+/*   By: zamazzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Created: 2018/10/06 16:52:24 by zamazzal          #+#    #+#             */
+/*   Updated: 2018/10/14 15:08:56 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "malloc.h"
+#include "libft.h"
 
-int		main(void)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	*str;
-	int		len;
+	size_t			x;
+	unsigned char	*ptr;
 
-	str = ft_malloc(1024);
-	str = ft_malloc(1024);
-	str = ft_malloc(478);
-	show_alloc_mem();
+	x = 0;
+	ptr = (unsigned char*)s;
+	while (x < n)
+	{
+		if (ptr[x] == (unsigned char)c)
+			return ((unsigned char*)s + x);
+		x++;
+	}
 	return (0);
 }
