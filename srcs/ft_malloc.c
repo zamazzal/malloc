@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 20:13:06 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:13:52 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/13 16:31:49 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	*alloc_by_type(size_t size)
 
 void		*ft_malloc(size_t size)
 {
-	void *ptr;
-	struct rlimit rlp;
+	void			*ptr;
+	struct rlimit	rlp;
 
 	if (getrlimit(RLIMIT_MEMLOCK, &rlp) == -1)
 		return (NULL);

@@ -49,13 +49,14 @@ void			*create_new_zone(size_t size, int type)
 	size_t	len;
 	t_zones	*new_zone;
 	t_block	*new_block;
+	void	*ptr;
 
 	len = ft_getlen(type);
 	new_zone = mmap(NULL, len
 	, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANON, 0, 0);
 	if (new_zone == MAP_FAILED)
 		return (NULL);
-	ft_bzero(new_zone, len);
+	ft_bzero((void*)new_zone, len);
 	new_zone->zone_type = type;
 	new_zone->size = len;
 	new_zone->next = NULL;
@@ -63,7 +64,8 @@ void			*create_new_zone(size_t size, int type)
 	new_block->size = size;
 	new_block->alc = IS_ALLOCATED;
 	prepare_nzone(new_zone, size, len, type);
-	return (new_block + sizeof(t_block));
+	ptr = (void*)new_block + sizeof(t_block);
+	return (ptr);
 }
 
 void			*alloc_large_zone(size_t size)
@@ -71,13 +73,14 @@ void			*alloc_large_zone(size_t size)
 	size_t	len;
 	t_zones	*new_zone;
 	t_block	*new_block;
+	void	*ptr;
 
 	len = multipleof_pages(size);
 	new_zone = mmap(NULL, len
 	, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANON, 0, 0);
 	if (new_zone == MAP_FAILED)
 		return (NULL);
-	ft_bzero(new_zone, len);
+	ft_bzero((void*)new_zone, len);
 	new_zone->zone_type = LARGE;
 	new_zone->size = len;
 	new_zone->next = NULL;
@@ -85,5 +88,6 @@ void			*alloc_large_zone(size_t size)
 	new_block->size = size;
 	new_block->alc = IS_ALLOCATED;
 	g_zones_list = ft_addinlist(new_zone);
-	return (new_block + sizeof(t_block));
+	ptr = (void*)new_block + sizeof(t_block);
+	return (ptr);
 }

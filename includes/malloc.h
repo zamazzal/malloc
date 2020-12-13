@@ -54,4 +54,6 @@ void				*create_new_zone(size_t size, int type);
 
 void				*ft_malloc(size_t size);
 
+
+void	ft_free(void *ptr);
 #endif

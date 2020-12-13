@@ -31,7 +31,7 @@ static void	*ft_reserv_zone(t_block *block, size_t size)
 		next_b->size = x;
 		block->alc = IS_ALLOCATED;
 		block->size = size;
-		return (block + sizeof(t_block));
+		return ((void*)block + sizeof(t_block));
 	}
 	return (NULL);
 }

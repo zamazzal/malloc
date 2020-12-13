@@ -15,9 +15,20 @@
 int		main(void)
 {
 	char	*str;
+	int i;
 
-	str = ft_malloc(578);
-	str = ft_malloc(478);
+	i = 200;
+	while (i < 1024)
+	{
+		str = ft_malloc(i++);
+	}
 	show_alloc_mem();
+	exit(1);
+	//char	*ptr;
+/*
+	str = ft_malloc(578);
+*/
+	//ptr = ft_malloc(478);
+	//ft_free(str);
 	return (0);
 }
