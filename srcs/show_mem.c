@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 18:13:33 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 18:14:43 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/13 14:00:22 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,21 @@ static void		ft_show_zone(t_zones *zone)
 		ft_putstr("SMALL: ");
 	else
 		ft_putstr("LARGE: ");
-	printf("%p\n", zone); // remove this
+	ft_putstr("0x10");
+	ft_putbase((long long int)zone, 16);
+	ft_putchar('\n');
 }
 
 static void		ft_show_block(void *ptr, size_t len)
 {
-	static size_t total = 0;
-
-	total += len;
-	printf("%p - %p: %ld bytes\n", ptr, ptr + len, len); // remove this
+	ft_putstr("0x10");
+	ft_putbase((long long int)ptr, 16);
+	ft_putstr(" - ");
+	ft_putstr("0x10");
+	ft_putbase((long long int)ptr + len, 16);
+	ft_putstr(": ");
+	ft_putnbr(len);
+	ft_putendl(" bytes");
 }
 
 static size_t	show_block_mem(void *ptr, long long	int *x)
@@ -63,7 +69,7 @@ void			show_alloc_mem(void)
 	{
 		ft_show_zone(tmp);
 		x = sizeof(t_zones);
-		while (x - 1 < tmp->size)
+		while (x - 1 < (long long int)tmp->size)
 		{
 			rzlt = show_block_mem(tmp, &x);
 			total += rzlt;

@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Created: 2020/12/13 12:59:01 by zamazzal          #+#    #+#             */
+/*   Updated: 2020/12/13 13:00:02 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
-
-int		main(void)
+/*
+void	ft_free(void *ptr)
 {
-	char	*str;
+	if (!ptr);
+		return ;
 
-	str = ft_malloc(578);
-	str = ft_malloc(478);
-	show_alloc_mem();
-	return (0);
+
+
+
+
+
+
+
+
+
+
+
 }
+*/

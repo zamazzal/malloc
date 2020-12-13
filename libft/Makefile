@@ -6,7 +6,7 @@
 #    By: zamazzal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/06 19:38:09 by zamazzal          #+#    #+#              #
-#    Updated: 2020/12/12 20:36:14 by zamazzal         ###   ########.fr        #
+#    Updated: 2020/12/13 12:31:04 by zamazzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC =	ft_atoi.c       ft_bzero.c      ft_goodstr.c    ft_isspace.c    ft_itoa.c 
 		ft_strnstr.c    ft_strrchr.c    ft_strmapi.c    ft_strlen.c		ft_strsplit.c	\
 		ft_striteri.c   ft_strjoin.c    ft_striter.c    ft_strclr.c		ft_strstr.c		\
 		ft_tolower.c    ft_toupper.c    ft_strupper.c   ft_strlcat.c	ft_strsub.c		\
-		ft_strtrim.c
+		ft_strtrim.c	ft_putbase.c
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJS = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))

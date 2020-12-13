@@ -6,7 +6,7 @@
 /*   By: zamazzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 18:29:41 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:37:23 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/13 12:30:46 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,5 @@ char				*ft_strupper(char *str);
 char				*ft_strndup(const char *s1, size_t n);
 char				*ft_goodstr(char *str);
 size_t				ft_lstlen(t_list *lst);
+void				ft_putbase(int value, int base);
 #endif

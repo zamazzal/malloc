@@ -6,13 +6,12 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 16:18:09 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:16:09 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/13 11:28:43 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MALLOC_H
 # define MALLOC_H
-
 
 # include "libft.h"
 # include <stdlib.h>

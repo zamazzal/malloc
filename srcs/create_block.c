@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 20:14:02 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:14:35 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/13 14:00:42 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	*ft_getblock(t_zones *list, size_t size)
 
 	ptr = NULL;
 	x = sizeof(t_zones);
-	while (x - 1 < list->size)
+	while (x - 1 < (long long int)list->size)
 	{
 		block = (void*)list + x;
 		if (block && block->size >= 1)

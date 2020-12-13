@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 20:14:38 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:15:29 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/13 13:59:42 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void		prepare_nzone(void *zone, size_t size, size_t len, int type)
 
 void			*create_new_zone(size_t size, int type)
 {
-	void	*ptr;
 	size_t	len;
 	t_zones	*new_zone;
 	t_block	*new_block;
@@ -69,7 +68,6 @@ void			*create_new_zone(size_t size, int type)
 
 void			*alloc_large_zone(size_t size)
 {
-	void	*ptr;
 	size_t	len;
 	t_zones	*new_zone;
 	t_block	*new_block;
