@@ -53,7 +53,6 @@ void				*create_in_existing_z(size_t size, int type);
 void				*create_new_zone(size_t size, int type);
 
 void				*ft_malloc(size_t size);
-
-
+size_t				ft_blocks_info(void const *ptr);
 void	ft_free(void *ptr);
 #endif

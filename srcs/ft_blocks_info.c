@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   b_getstatus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Created: 2020/12/14 17:31:36 by zamazzal          #+#    #+#             */
+/*   Updated: 2020/12/14 17:31:47 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-int		main(void)
+size_t		ft_blocks_info(void const *ptr)
 {
-	char	*str, *ktr;
+	long long int	x;
+	t_block			*block_tmp;
 
-	str = ft_malloc(1337);
-	ktr = ft_malloc(104);
-	//str = ft_malloc(8024);
-	ft_blocks_info(str);
-	
-	ft_free(str);
-	//show_alloc_mem();
-	//char	*ptr;
-/*
-	str = ft_malloc(578);
-*/
-	//ptr = ft_malloc(478);
-	return (0);
+	x = (long long int)ptr;
+	x -= sizeof(t_block);
+	if (x < (long long int)sizeof(t_zones))
+		return (-1);
+	block_tmp = (void*)ptr - sizeof(t_block);
+	ft_putstr("0x10");
+	ft_putbase((long long int)ptr, 16);
+	ft_putstr(" - ");
+	ft_putnbr(block_tmp->size);
+	ft_putendl(" bytes");
+	return (block_tmp->size);
 }
