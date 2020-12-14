@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 20:13:06 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/13 16:31:49 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/14 19:31:32 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,25 @@ static void	*alloc_by_type(size_t size)
 {
 	int		type;
 	void	*ptr;
+	int		new_z;
 
 	ptr = NULL;
+	new_z = 0;
 	type = ft_check_type(size);
 	if (type == TINY || type == SMALL)
 	{
 		if (!(ptr = create_in_existing_z(size, type)))
+		{
 			ptr = create_new_zone(size, type);
+			new_z = 1;
+		}
 	}
 	else
+	{
 		ptr = alloc_large_zone(size);
+		new_z = 1;
+	}
+	malloc_log(ptr, new_z);
 	return (ptr);
 }
 

@@ -19,6 +19,7 @@
 # include <strings.h>
 # include <sys/mman.h>
 # include <unistd.h>
+# include <time.h>
 # define TINY 1
 # define SMALL 2
 # define LARGE 3

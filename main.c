@@ -14,14 +14,14 @@
 
 int		main(void)
 {
-	char	*str, *ktr;
+	char	*ktr;
 
-	str = ft_malloc(1337);
-	ktr = ft_malloc(104);
+	ktr = ft_malloc(24);
+	ktr = ft_malloc(13);
 	//str = ft_malloc(8024);
-	ft_blocks_info(str);
-	
-	ft_free(str);
+	//ft_blocks_info(ktr);
+
+	//ft_free(str);
 	//show_alloc_mem();
 	//char	*ptr;
 /*

@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 20:14:02 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/13 14:00:42 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/14 19:31:43 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	*ft_reserv_zone(t_block *block, size_t size)
 {
 	t_block			*next_b;
 	long long int	x;
-	void			* ptr;
+	void			*ptr;
 
 	if (block->size >= size)
 	{
