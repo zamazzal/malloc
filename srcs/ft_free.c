@@ -93,6 +93,8 @@ void	ft_free(void *ptr)
 	if (x < (long long int)sizeof(t_zones))
 		return ;
 	block_tmp = ptr - sizeof(t_block);
+	printf("%d\n", block_tmp->alc);
 	block_tmp->alc = 0;
+	printf("zamazzal\n");
 	ft_empty_zone();
 }

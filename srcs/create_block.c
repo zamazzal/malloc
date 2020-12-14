@@ -12,6 +12,13 @@
 
 #include "malloc.h"
 
+static	int	ft_overflow_check(long long int x, size_t len, size_t size)
+{
+	if (x + (long long)size + (long long)sizeof(t_block) > (long long)len)
+		return (1);
+	return (0);
+}
+
 static void	*ft_reserv_zone(t_block *block, size_t size)
 {
 	t_block			*next_b;
@@ -31,7 +38,7 @@ static void	*ft_reserv_zone(t_block *block, size_t size)
 		next_b->size = x;
 		block->alc = IS_ALLOCATED;
 		block->size = size;
-		return ((void*)block + sizeof(t_block));
+		return (block + sizeof(t_block));
 	}
 	return (NULL);
 }
@@ -46,6 +53,8 @@ static void	*ft_getblock(t_zones *list, size_t size)
 	x = sizeof(t_zones);
 	while (x - 1 < (long long int)list->size)
 	{
+		if (ft_overflow_check(x, list->size, size))
+			return (NULL);
 		block = (void*)list + x;
 		if (block && block->size >= 1)
 		{

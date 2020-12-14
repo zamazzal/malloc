@@ -36,7 +36,7 @@ void		*ft_malloc(size_t size)
 
 	if (getrlimit(RLIMIT_MEMLOCK, &rlp) == -1)
 		return (NULL);
-	if (rlp.rlim_cur < size)
+	if (rlp.rlim_cur < size || size < 1)
 		return (NULL);
 	ptr = alloc_by_type(size);
 	return (ptr);

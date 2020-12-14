@@ -17,13 +17,13 @@ int		main(void)
 	char	*str;
 	int i;
 
-	i = 200;
+	i = 0;
 	while (i < 1024)
 	{
-		str = ft_malloc(i++);
+		str = ft_malloc(8024);
+		i++;
 	}
-	show_alloc_mem();
-	exit(1);
+	//show_alloc_mem();
 	//char	*ptr;
 /*
 	str = ft_malloc(578);
