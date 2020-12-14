@@ -34,7 +34,7 @@ static void	*alloc_by_type(size_t size)
 		ptr = alloc_large_zone(size);
 		new_z = 1;
 	}
-	malloc_log(ptr, new_z);
+	// malloc_log(ptr, new_z); for bonus
 	return (ptr);
 }
 
