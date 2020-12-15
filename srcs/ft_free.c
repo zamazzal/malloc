@@ -12,7 +12,7 @@
 
 #include "malloc.h"
 
-void	ft_delete_zone(t_zones *zone)
+int		ft_delete_zone(t_zones *zone)
 {
 	t_zones *tmp;
 	t_zones *tmp2;
@@ -21,9 +21,9 @@ void	ft_delete_zone(t_zones *zone)
 	tmp2 = tmp;
 	if (tmp == zone)
 	{
-		g_zones_list = (!tmp->next)
-		? NULL : g_zones_list->next;
-		return ;
+		g_zones_list = (!tmp->next) ? NULL : g_zones_list->next;
+		munmap(zone, zone->size);
+		return (1);
 	}
 	while (tmp->next != NULL)
 	{
@@ -37,7 +37,8 @@ void	ft_delete_zone(t_zones *zone)
 		tmp = tmp->next;
 	}
 	g_zones_list = tmp2;
-	return ;
+	munmap(zone, zone->size);
+	return (1);
 }
 
 static int	check_empty_zone(void *ptr, long long	int *x)
@@ -50,13 +51,15 @@ static int	check_empty_zone(void *ptr, long long	int *x)
 		*x = *x + sizeof(t_block) + block_ptr->size;
 		if (block_ptr->alc == IS_ALLOCATED)
 			return (0);
+		else
+			return (2);
 	}
 	else
 		(*x)++;
 	return (1);
 }
 
-void		ft_empty_zone(void)
+int			ft_empty_zone(void)
 {
 	t_zones			*tmp;
 	long long int	x;
@@ -72,29 +75,29 @@ void		ft_empty_zone(void)
 			empty = check_empty_zone(tmp, &x);
 			if (empty == 0)
 				break ;
+			if (empty == 2 && tmp->zone_type == LARGE)
+				return (ft_delete_zone(tmp));
 		}
 		if (empty == 1)
-		{
-			ft_delete_zone(tmp);
-			break ;
-		}
-		else
-			tmp = tmp->next;
+			return (ft_delete_zone(tmp));
+		tmp = tmp->next;
 	}
+	return (0);
 }
 
 void	ft_free(void *ptr)
 {
 	long long int	x;
 	t_block			*block_tmp;
+	int				empty;
 
 	x = (long long int)ptr;
 	x -= sizeof(t_block);
 	if (x < (long long int)sizeof(t_zones))
 		return ;
 	block_tmp = ptr - sizeof(t_block);
-	printf("%d\n", block_tmp->alc);
 	block_tmp->alc = 0;
-	printf("zamazzal\n");
-	ft_empty_zone();
+	empty = 1;
+	while (empty)
+		empty = ft_empty_zone();
 }
