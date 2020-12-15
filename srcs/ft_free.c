@@ -12,7 +12,7 @@
 
 #include "malloc.h"
 
-int		ft_delete_zone(t_zones *zone)
+static int		ft_delete_zone_list(t_zones *zone)
 {
 	t_zones *tmp;
 	t_zones *tmp2;
@@ -22,7 +22,6 @@ int		ft_delete_zone(t_zones *zone)
 	if (tmp == zone)
 	{
 		g_zones_list = (!tmp->next) ? NULL : g_zones_list->next;
-		munmap(zone, zone->size);
 		return (1);
 	}
 	while (tmp->next != NULL)
@@ -37,11 +36,17 @@ int		ft_delete_zone(t_zones *zone)
 		tmp = tmp->next;
 	}
 	g_zones_list = tmp2;
-	munmap(zone, zone->size);
 	return (1);
 }
 
-static int	check_empty_zone(void *ptr, long long	int *x)
+static int		ft_delete_zone(t_zones *zone)
+{
+	ft_delete_zone_list(zone);
+	munmap((void*)zone, zone->size);
+	return (0);
+}
+
+static int		check_empty_zone(void *ptr, long long	int *x)
 {
 	t_block *block_ptr;
 
@@ -59,7 +64,7 @@ static int	check_empty_zone(void *ptr, long long	int *x)
 	return (1);
 }
 
-int			ft_empty_zone(void)
+static int		ft_empty_zone(void)
 {
 	t_zones			*tmp;
 	long long int	x;
@@ -85,7 +90,7 @@ int			ft_empty_zone(void)
 	return (0);
 }
 
-void	ft_free(void *ptr)
+void			ft_free(void *ptr)
 {
 	long long int	x;
 	t_block			*block_tmp;

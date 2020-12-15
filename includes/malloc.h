@@ -56,4 +56,7 @@ void				*create_new_zone(size_t size, int type);
 void				*ft_malloc(size_t size);
 size_t				ft_blocks_info(void const *ptr);
 void	ft_free(void *ptr);
+void		*ft_realloc(void *ptr, size_t size);
+size_t		ft_block_len(void const *ptr);
+void			malloc_log(void *ptr, int new_z);
 #endif

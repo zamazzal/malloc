@@ -29,3 +29,16 @@ size_t		ft_blocks_info(void const *ptr)
 	ft_putendl(" bytes");
 	return (block_tmp->size);
 }
+
+size_t		ft_block_len(void const *ptr)
+{
+	long long int	x;
+	t_block			*block_tmp;
+
+	x = (long long int)ptr;
+	x -= sizeof(t_block);
+	if (x < (long long int)sizeof(t_zones))
+		return (-1);
+	block_tmp = (void*)ptr - sizeof(t_block);
+	return (block_tmp->size);
+}
