@@ -22,10 +22,10 @@ void	*malloc(size_t size)
 
 void	*realloc(void *ptr, size_t size)
 {
-	void	*ptr;
+	void	*new_ptr;
 
-	ptr = ft_realloc(ptr, size);
-	return (ptr);
+	new_ptr = ft_realloc(ptr, size);
+	return (new_ptr);
 }
 
 void	free(void *ptr)
