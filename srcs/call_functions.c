@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   call_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/15 12:41:22 by zamazzal         ###   ########.fr       */
+/*   Created: 2020/12/16 20:16:43 by zamazzal          #+#    #+#             */
+/*   Updated: 2020/12/16 20:16:45 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-int main()
+void	*malloc(size_t size)
 {
-int i;
-char *addr;
+	void	*ptr;
 
-i = 0;
-while (i < 1024)
-{
-addr = (char*)ft_malloc(1024);
-addr[0] = 42;
-ft_free(addr);
-i++;
+	ptr = ft_malloc(size);
+	return (ptr);
 }
-return (0);
+
+void	*realloc(void *ptr, size_t size)
+{
+	void	*ptr;
+
+	ptr = ft_realloc(ptr, size);
+	return (ptr);
+}
+
+void	free(void *ptr)
+{
+	ft_free(ptr);
 }
