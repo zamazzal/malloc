@@ -25,7 +25,7 @@ static size_t	digit_count_base(long int number, int base)
 	return (len);
 }
 
-static void		printf_converted_base(size_t len, int value, int sign, int base)
+static void		print_converted_base(size_t len, int value, int sign, int base)
 {
 	static	char	bases[] = "0123456789abcdef";
 	char			ptr[len + 1];
@@ -60,6 +60,6 @@ void			ft_putbase(int value, int base)
 	}
 	len = digit_count_base(value, base);
 	len += (sign ? 1 : 0);
-	printf_converted_base(len, value, sign, base);
+	print_converted_base(len, value, sign, base);
 	return ;
 }

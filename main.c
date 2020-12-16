@@ -6,27 +6,25 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 19:40:49 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 20:05:21 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/15 12:41:22 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-int		main(void)
+int main()
 {
-	char	*ktr, *str;
+char *addr;
 
-	ktr = ft_malloc(24);
-	ktr = ft_malloc(13);
-	str = ft_malloc(1337);
-	ft_blocks_info(str);
-
-	ft_free(str);
-	show_alloc_mem();
-	//char	*ptr;
-/*
-	str = ft_malloc(578);
+addr = ft_malloc(400);
+ft_free(addr);
+/*addr = ft_malloc(400);
+ft_free(addr);
+addr = ft_malloc(400);
+ft_free(addr);
+addr = ft_malloc(400);
+ft_free(addr);
 */
-	//ptr = ft_malloc(478);
-	return (0);
+show_alloc_mem();
+return (0);
 }

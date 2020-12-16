@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 16:18:09 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/13 11:28:43 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/16 19:47:24 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@
 # define TINY 1
 # define SMALL 2
 # define LARGE 3
+# define IS_ALLOCATED 1337
+
 # define SMALL_SIZE 1024
 # define TINY_SIZE 128
 # define PREALLOC_SIZE 128
-# define IS_ALLOCATED 1337
 
 typedef struct		s_block
 {
@@ -55,8 +56,10 @@ void				*create_new_zone(size_t size, int type);
 
 void				*ft_malloc(size_t size);
 size_t				ft_blocks_info(void const *ptr);
-void	ft_free(void *ptr);
-void		*ft_realloc(void *ptr, size_t size);
-size_t		ft_block_len(void const *ptr);
-void			malloc_log(void *ptr, int new_z);
+void				ft_free(void *ptr);
+void				*ft_realloc(void *ptr, size_t size);
+size_t				ft_block_len(void const *ptr);
+void				malloc_log(void *ptr, int new_z);
+int					check_zone_type_i(int type);
+int					ft_empty_zone(void);
 #endif
