@@ -69,7 +69,7 @@ void			show_alloc_mem(void)
 	{
 		ft_show_zone(tmp);
 		x = sizeof(t_zones);
-		while (x - 1 < (long long int)tmp->size)
+		while (x + 1 < (long long int)tmp->size)
 		{
 			rzlt = show_block_mem(tmp, &x);
 			total += rzlt;

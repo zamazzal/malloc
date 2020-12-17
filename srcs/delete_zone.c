@@ -20,7 +20,7 @@ static int		ft_delete_zone_list(t_zones *zone)
 	if (tmp == zone)
 	{
 		g_zones_list = (!tmp->next) ? NULL : g_zones_list->next;
-		return (1);
+		return (0);
 	}
 	while (tmp->next != NULL)
 	{
@@ -31,7 +31,7 @@ static int		ft_delete_zone_list(t_zones *zone)
 		}
 		tmp = tmp->next;
 	}
-	return (1);
+	return (0);
 }
 
 static int		ft_delete_zone(t_zones *zone)
@@ -54,64 +54,32 @@ static int		ft_delete_zone(t_zones *zone)
 	return (1);
 }
 
-static int		check_empty_zone(void *ptr, long long int *x, int type)
+static int		check_empty_zone(t_zones *zone)
 {
-	t_block *block_ptr;
+	long long int	x;
+	t_block			*block;
 
-	block_ptr = ptr + *x;
-	if (block_ptr && block_ptr->size >= 1)
+	x = sizeof(t_block);
+	while (x + 1 < (long long)zone->size)
 	{
-		*x = *x + sizeof(t_block) + block_ptr->size;
-		if (block_ptr->alc == IS_ALLOCATED)
-			return (0);
-		else if (!block_ptr->alc && type == LARGE)
-			return (2);
+		block = (void*)zone + x;
+		if (block && block->size > 0)
+		{
+			if (block->alc == IS_ALLOCATED)
+				return (0);
+			else if (!block->alc && zone->zone_type == LARGE)
+				return (1);
+			x += block->size;
+		}
+		else
+			x++;
 	}
-	else
-		(*x)++;
 	return (1);
 }
 
-static int		ft_check_blocks(t_zones *tmp, long long *x)
+int		ft_empty_zone(t_zones *zone)
 {
-	int rtn;
-	int	empty;
-
-	empty = 0;
-	rtn = 0;
-	while ((*x) - 1 < (long long int)tmp->size)
-	{
-		empty = check_empty_zone(tmp, x, tmp->zone_type);
-		if (empty == 0)
-			break ;
-		if (empty == 2)
-		{
-			if ((rtn = ft_delete_zone(tmp)))
-				return (1);
-		}
-	}
-	if (empty == 1)
-	{
-		if ((rtn = ft_delete_zone(tmp)))
-			return (1);
-	}
-	return (0);
-}
-
-int				ft_empty_zone(void)
-{
-	t_zones			*tmp;
-	long long int	x;
-	int				rtn;
-
-	tmp = g_zones_list;
-	while (tmp != NULL)
-	{
-		x = sizeof(t_zones);
-		rtn = ft_check_blocks(tmp, &x);
-		if (rtn != 0)
-			return (rtn);
-		tmp = tmp->next;
-	}
+	if (check_empty_zone(zone))
+		return (ft_delete_zone(zone));
 	return (0);
 }

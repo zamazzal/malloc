@@ -14,16 +14,16 @@
 
 t_block			*ft_get_block(void *ptr)
 {
-	t_zones	*tmp;
-	t_block *block;
-	size_t	x;
-	void	*ptr_tmp;
+	t_zones			*tmp;
+	t_block			*block;
+	long long int	x;
+	void			*ptr_tmp;
 
 	tmp = g_zones_list;
 	while (tmp != NULL)
 	{
-		x = sizeof(t_list);
-		while (x + 1 < tmp->size)
+		x = sizeof(t_zones);
+		while (x + 1 < (long long)tmp->size)
 		{
 			block = (void*)tmp + x;
 			if (block && block->size > 0)
@@ -41,19 +41,47 @@ t_block			*ft_get_block(void *ptr)
 	return (NULL);
 }
 
+t_zones			*ft_get_zone(void *ptr)
+{
+	t_zones			*tmp;
+	t_block			*block;
+	long long int	x;
+	void			*ptr_tmp;
+
+	tmp = g_zones_list;
+	while (tmp != NULL)
+	{
+		x = sizeof(t_zones);
+		while (x + 1 < (long long)tmp->size)
+		{
+			block = (void*)tmp + x;
+			if (block && block->size > 0)
+			{
+				ptr_tmp = (void*)block + sizeof(t_block);
+				if (ptr == ptr_tmp)
+					return (tmp);
+				x += block->size;
+			}
+			else
+				x++;
+		}
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
 void			ft_free(void *ptr)
 {
 	t_block			*block_tmp;
-	int				empty;
+	t_zones			*zone_tmp;
 
 	if (!ptr)
 		return ;
 	block_tmp = ft_get_block(ptr);
-	if (!block_tmp)
+	zone_tmp = ft_get_zone(ptr);
+	if (!zone_tmp || !block_tmp)
 		return ;
 	if (block_tmp->alc == IS_ALLOCATED)
 		block_tmp->alc = 0;
-	empty = 1;
-	while (empty)
-		empty = ft_empty_zone();
+	ft_empty_zone(zone_tmp);
 }

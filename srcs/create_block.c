@@ -53,7 +53,7 @@ static void	*ft_getblock(t_zones *list, size_t size)
 
 	ptr = NULL;
 	x = sizeof(t_zones);
-	while (x - 1 < (long long int)list->size)
+	while (x + 1 < (long long int)list->size)
 	{
 		if (ft_overflow_check(x, list->size, size))
 			return (NULL);
