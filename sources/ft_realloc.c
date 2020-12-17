@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:16:43 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/16 20:16:45 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/17 20:54:05 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void		*ft_realloc(void *ptr, size_t size)
 {
 	void			*new_ptr;
-	struct rlimit	rlp;
 	size_t			ptr_len;
 
 	new_ptr = ft_malloc(size);
