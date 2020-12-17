@@ -16,7 +16,7 @@ size_t		ft_blocks_info(void const *ptr)
 {
 	t_block			*block_tmp;
 
-	block_tmp = ft_get_block(ptr);
+	block_tmp = ft_get_block((void*)ptr);
 	if (!block_tmp)
 		return (-1);
 	ft_putstr("0x10");
@@ -31,7 +31,7 @@ size_t		ft_block_len(void const *ptr)
 {
 	t_block			*block_tmp;
 
-	block_tmp = ft_get_block(ptr);
+	block_tmp = ft_get_block((void*)ptr);
 	if (!block_tmp)
 		return (-1);
 	return (block_tmp->size);
