@@ -33,6 +33,6 @@ size_t		ft_block_len(void const *ptr)
 
 	block_tmp = ft_get_block((void*)ptr);
 	if (!block_tmp)
-		return (-1);
+		return (0);
 	return (block_tmp->size);
 }

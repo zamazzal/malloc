@@ -26,7 +26,7 @@ void		*ft_realloc(void *ptr, size_t size)
 	if (ptr)
 	{
 		ptr_len = ft_block_len(ptr);
-		if (ptr_len == -1)
+		if (ptr_len == 0)
 			return (NULL);
 		if (ptr_len > size)
 			ptr_len = size;
