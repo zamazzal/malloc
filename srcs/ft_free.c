@@ -12,19 +12,45 @@
 
 #include "malloc.h"
 
+t_block			*ft_get_block(void *ptr)
+{
+	t_zones	*tmp;
+	t_block *block;
+	size_t	x;
+	void	*ptr_tmp;
+
+	tmp = g_zones_list;
+	while (tmp != NULL)
+	{
+		x = sizeof(t_list);
+		while (x + 1 < tmp->size)
+		{
+			block = (void*)tmp + x;
+			if (block && block->size > 0)
+			{
+				ptr_tmp = (void*)block + sizeof(t_block);
+				if (ptr == ptr_tmp)
+					return (block);
+				x += block->size;
+			}
+			else
+				x++;
+		}
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
 void			ft_free(void *ptr)
 {
-	long long int	x;
 	t_block			*block_tmp;
 	int				empty;
 
 	if (!ptr)
 		return ;
-	x = (long long int)ptr;
-	x -= sizeof(t_block);
-	if (x < (long long int)sizeof(t_zones))
+	block_tmp = ft_get_block(ptr);
+	if (!block_tmp)
 		return ;
-	block_tmp = ptr - sizeof(t_block);
 	if (block_tmp->alc == IS_ALLOCATED)
 		block_tmp->alc = 0;
 	empty = 1;

@@ -65,14 +65,11 @@ static void		log_created_zone(void *ptr)
 
 static void		log_created_block(void *ptr)
 {
-	long long int	x;
 	t_block			*block_tmp;
 
-	x = (long long int)ptr;
-	x -= sizeof(t_block);
-	if (x < (long long int)sizeof(t_zones))
+	block_tmp = ft_get_block(ptr);
+	if (!block_tmp)
 		return ;
-	block_tmp = (void*)ptr - sizeof(t_block);
 	ft_putstr("+block ");
 	ft_print_time();
 	ft_putchar(' ');

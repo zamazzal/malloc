@@ -14,14 +14,11 @@
 
 size_t		ft_blocks_info(void const *ptr)
 {
-	long long int	x;
 	t_block			*block_tmp;
 
-	x = (long long int)ptr;
-	x -= sizeof(t_block);
-	if (x < (long long int)sizeof(t_zones))
+	block_tmp = ft_get_block(ptr);
+	if (!block_tmp)
 		return (-1);
-	block_tmp = (void*)ptr - sizeof(t_block);
 	ft_putstr("0x10");
 	ft_putbase((long long int)ptr, 16);
 	ft_putstr(" - ");
@@ -32,13 +29,10 @@ size_t		ft_blocks_info(void const *ptr)
 
 size_t		ft_block_len(void const *ptr)
 {
-	long long int	x;
 	t_block			*block_tmp;
 
-	x = (long long int)ptr;
-	x -= sizeof(t_block);
-	if (x < (long long int)sizeof(t_zones))
+	block_tmp = ft_get_block(ptr);
+	if (!block_tmp)
 		return (-1);
-	block_tmp = (void*)ptr - sizeof(t_block);
 	return (block_tmp->size);
 }

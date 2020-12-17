@@ -62,4 +62,6 @@ size_t				ft_block_len(void const *ptr);
 void				malloc_log(void *ptr, int new_z);
 int					check_zone_type_i(int type);
 int					ft_empty_zone(void);
+
+t_block			*ft_get_block(void *ptr);
 #endif
