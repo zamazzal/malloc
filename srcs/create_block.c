@@ -27,7 +27,7 @@ static void	*ft_reserv_zone(t_block *block, size_t size)
 
 	if (block->size >= size)
 	{
-		x = (block->size - sizeof(t_block) - size);
+		x = block->size - (sizeof(t_block) + size);
 		ptr = (void*)block + sizeof(t_block);
 		if (x < 1 || block->size == size)
 		{

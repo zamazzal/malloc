@@ -86,6 +86,7 @@ void			*alloc_large_zone(size_t size)
 	void	*ptr;
 	t_zones	*zone;
 
+	size += sizeof(t_block) + sizeof(t_zones);
 	len = multipleof_pages(size);
 	ptr = create_zone_mmap(len, LARGE, size);
 	if (!ptr)
