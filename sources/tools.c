@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 18:16:09 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/12 18:16:31 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/18 18:41:48 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ size_t	multipleof_pages(size_t size)
 {
 	size_t page_size;
 
-	page_size = getpagesize();
+	size = getpagesize();
 	while (size % page_size != 0)
 		size++;
 	return (size);
