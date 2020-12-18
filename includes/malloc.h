@@ -50,6 +50,7 @@ t_zones				*g_zones_list;
 void	*malloc(size_t size);
 void	free(void *ptr);
 void	*realloc(void *ptr, size_t size);
+void	*reallocf(void *ptr, size_t size);
 
 
 void		*create_in_existing_z(size_t size, int type);
@@ -62,8 +63,7 @@ size_t		ft_block_len(void const *ptr);
 
 void			ft_free(void *ptr);
 void		*ft_malloc(size_t size);
-void		*ft_realloc(void *ptr, size_t size);
-
+void		*ft_realloc(void *ptr, size_t size, int force);
 
 
 t_zones	*ft_addinlist(t_zones *new_zone);

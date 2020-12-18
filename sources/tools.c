@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 18:16:09 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/18 18:41:48 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/18 18:47:15 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ size_t	get_size_bytype(int type)
 {
 	size_t size;
 
+	size = getpagesize();
 	if (type == TINY)
 		size = TINY_SIZE;
 	if (type == SMALL)
@@ -37,7 +38,7 @@ size_t	multipleof_pages(size_t size)
 {
 	size_t page_size;
 
-	size = getpagesize();
+	page_size = getpagesize();
 	while (size % page_size != 0)
 		size++;
 	return (size);

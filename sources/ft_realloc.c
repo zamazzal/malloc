@@ -12,14 +12,18 @@
 
 #include "malloc.h"
 
-void		*ft_realloc(void *ptr, size_t size)
+void		*ft_realloc(void *ptr, size_t size, int force)
 {
 	void			*new_ptr;
 	size_t			ptr_len;
 
 	new_ptr = ft_malloc(size);
-    if (!new_ptr)
-        return (NULL);
+	if (!new_ptr)
+	{
+		if (force && ptr)
+			ft_free(ptr);
+		return (NULL);
+	}
 	if (ptr)
 	{
 		ptr_len = ft_block_len(ptr);
@@ -33,10 +37,18 @@ void		*ft_realloc(void *ptr, size_t size)
 	return (new_ptr);
 }
 
+void	*reallocf(void *ptr, size_t size)
+{
+	void	*new_ptr;
+
+	new_ptr = ft_realloc(ptr, size, 1);
+	return (new_ptr);
+}
+
 void	*realloc(void *ptr, size_t size)
 {
 	void	*new_ptr;
 
-	new_ptr = ft_realloc(ptr, size);
+	new_ptr = ft_realloc(ptr, size, 0);
 	return (new_ptr);
 }
