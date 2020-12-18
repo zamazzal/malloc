@@ -71,7 +71,7 @@ void			*create_new_zone(size_t size, int type)
 	t_zones	*zone;
 
 	len = ft_getlen(type, size);
-	zone = ft_mmap(len);
+	zone = (t_zones*)ft_mmap(len);
 	if (!zone)
 		return (NULL);
     ptr = ft_create_block(zone, type, size, len);

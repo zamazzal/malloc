@@ -16,6 +16,11 @@ static int		ft_delete_zone(t_zones *zone)
 {
 	size_t	ptr_len;
 
+	if (zone->zone_type != LARGE)
+	{
+		if (check_zone_type_i(zone->zone_type) <= 1)
+			return (0);
+	}
 	ptr_len = zone->size;
 	g_zones_list = ft_delete_zone_list(zone);
 	ft_bzero((void*)zone, ptr_len);
