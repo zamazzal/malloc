@@ -21,7 +21,7 @@ static void		prepare_nzone(t_zones *zone)
     new_block = (void*)zone + sizeof(t_zones);
 	x = sizeof(t_zones) + sizeof(t_block) + new_block->size;
 	space = get_size_bytype(zone->zone_type);
-	while (x + 1 < zone->size)
+	while (x + sizeof(t_block) < zone->size)
 	{
 		new_block = (void*)zone + x;
 		new_block->size = space;
@@ -33,7 +33,12 @@ static void		prepare_nzone(t_zones *zone)
 static	void	*ft_mmap(size_t len)
 {
 	void	*ptr;
+	struct rlimit	rlp;
 
+	if (getrlimit(RLIMIT_MEMLOCK, &rlp) == -1)
+		return (NULL);
+	if (rlp.rlim_cur < len || len < 1)
+		return (NULL);
 	ptr = mmap(NULL, len
 	, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
 	if (ptr == MAP_FAILED)

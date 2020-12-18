@@ -30,7 +30,7 @@ static int		check_empty_zone(t_zones *zone)
 	t_block			*block;
 
 	x = sizeof(t_zones);
-	while (x + 1 < (long long)zone->size)
+	while (x + ONE_BLOCK < (long long)zone->size)
 	{
 		block = (void*)zone + x;
 		if (block && block->size > 0)

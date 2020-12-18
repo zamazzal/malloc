@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 16:18:09 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/16 19:47:24 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/18 17:13:25 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define TINY_SIZE 128
 # define PREALLOC_SIZE 128
 
+# define ONE_BLOCK (long long)sizeof(t_block)
+
 typedef struct		s_block
 {
 	size_t	size;
@@ -45,6 +47,9 @@ typedef struct		s_zones
 t_zones				*g_zones_list;
 
 
+void	*malloc(size_t size);
+void	free(void *ptr);
+void	*realloc(void *ptr, size_t size);
 
 
 void		*create_in_existing_z(size_t size, int type);

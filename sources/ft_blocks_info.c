@@ -11,7 +11,7 @@ t_block		   *ft_get_block(void *ptr)
 	while (tmp != NULL)
 	{
 		x = sizeof(t_zones);
-		while (x + 1 < (long long)tmp->size)
+		while (x + ONE_BLOCK < (long long)tmp->size)
 		{
 			block = (void*)tmp + x;
 			if (block && block->size > 0)
@@ -40,7 +40,7 @@ t_zones        *ft_get_zone(void *ptr)
 	while (tmp != NULL)
 	{
 		x = sizeof(t_zones);
-		while (x + 1 < (long long)tmp->size)
+		while (x + ONE_BLOCK < (long long)tmp->size)
 		{
 			block = (void*)tmp + x;
 			if (block && block->size > 0)

@@ -41,11 +41,8 @@ static void	*alloc_by_type(size_t size)
 void		*ft_malloc(size_t size)
 {
 	void			*ptr;
-	struct rlimit	rlp;
 
-	if (getrlimit(RLIMIT_MEMLOCK, &rlp) == -1)
-		return (NULL);
-	if (rlp.rlim_cur < size || size < 1)
+	if (size < 1)
 		return (NULL);
 	ptr = alloc_by_type(size);
 	return (ptr);

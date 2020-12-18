@@ -6,7 +6,7 @@
 #    By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/14 14:05:50 by angavrel          #+#    #+#              #
-#    Updated: 2020/12/16 20:21:03 by zamazzal         ###   ########.fr        #
+#    Updated: 2020/12/18 17:15:29 by zamazzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,27 +22,23 @@ NAME = libft_malloc.so
 
 HOSTLIB = libft_malloc_$(HOSTTYPE).so
 
-SRC =	calculation.c \
-create_block.c \
+SRC = create_block.c \
 create_zone.c \
-delete_zone.c \
 ft_blocks_info.c \
 ft_free.c \
-ft_log.c \
 ft_malloc.c \
 ft_realloc.c \
+lists_management.c \
 show_mem.c \
-tools.c \
-zone_types.c \
-call_functions.c
+tools.c
 
-SRCDIR = srcs/
+SRCDIR = sources/
 
 OBJDIR = objs
 
 CFLAGS = -Wall -Wextra -Werror
 
-LDFLAGS = -shared
+LDFLAGS = -fpic -shared
 
 DEP = libft/includes/libft.h includes/malloc.h
 

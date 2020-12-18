@@ -53,11 +53,11 @@ static void	*ft_getblock(t_zones *list, size_t size)
 
 	ptr = NULL;
 	x = sizeof(t_zones);
-	while (x + 1 < (long long int)list->size)
+	while (x + ONE_BLOCK < (long long int)list->size)
 	{
-		if (ft_overflow_check(x, list->size, size))
-			return (NULL);
 		block = (void*)list + x;
+		if (ft_overflow_check(x, list->size, block->size))
+			return (NULL);
 		if (block && block->size >= 1)
 		{
 			x += sizeof(t_block) + block->size;
