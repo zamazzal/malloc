@@ -15,11 +15,8 @@
 static void		*ft_mmap(size_t len)
 {
 	void			*ptr;
-	struct rlimit	rlp;
 
-	if (getrlimit(RLIMIT_MEMLOCK, &rlp) == -1)
-		return (NULL);
-	if (rlp.rlim_cur < len || len < 1)
+	if (len < 1)
 		return (NULL);
 	ptr = mmap(NULL, len
 	, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);

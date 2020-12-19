@@ -29,7 +29,6 @@ static void		*alloc_by_type(size_t size)
 		new_z = 1;
 	}
 	malloc_log(ptr, new_z);
-	ft_bzero(ptr, size);
 	return (ptr);
 }
 
@@ -49,6 +48,23 @@ void			*malloc(size_t size)
 
 	pthread_mutex_lock(&g_lock);
 	ptr = ft_malloc(size);
+	pthread_mutex_unlock(&g_lock);
+	return (ptr);
+}
+
+void			*calloc(size_t nmemb, size_t size)
+{
+	void	*ptr;
+	size_t	m_size;
+
+	pthread_mutex_lock(&g_lock);
+	m_size = size * nmemb;
+	if (nmemb <= 0 || size <= 0 || m_size <= 0)
+		return (NULL);
+	if (m_size / size != nmemb)
+		return (NULL);
+	ptr = ft_malloc(m_size);
+	ft_bzero(ptr, m_size);
 	pthread_mutex_unlock(&g_lock);
 	return (ptr);
 }
