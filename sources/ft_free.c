@@ -79,7 +79,8 @@ void			ft_free(void *ptr)
 		block_tmp->alc = 0;
 	if (check_empty_zone(zone_tmp))
 		ft_delete_zone(zone_tmp);
-	ft_fusion(zone_tmp);
+	else if (zone_tmp->zone_type != LARGE)
+		ft_fusion(zone_tmp);
 }
 
 void			free(void *ptr)
