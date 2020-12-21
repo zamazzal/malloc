@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 20:14:02 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/19 04:47:21 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/21 20:33:27 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void		*ft_appand_block(t_block *block, size_t size)
 {
 	t_block		*new_block;
 	void		*ptr;
+
 	ptr = NULL;
 	new_block = (void*)block + sizeof(t_block) + block->size;
 	new_block->alc = IS_ALLOCATED;

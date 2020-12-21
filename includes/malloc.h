@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 16:18:09 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/19 04:59:00 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/21 20:33:34 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 
 # define LOG_FILE "/var/tmp/malloc.log"
 
-# define DEBUG 1
-# define LOG 1
+# define DEBUG 0
+# define LOG 0
 
 typedef struct		s_block
 {
