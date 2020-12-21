@@ -30,9 +30,9 @@ void			free_log(void *ptr)
 {
 	int fd;
 
-	if (ft_strequ(getenv("MALLOC_DEBUG"), "ON"))
+	if (DEBUG)
 		log_deleted_block(ptr, 1);
-	if (ft_strequ(getenv("MALLOC_LOG"), "ON"))
+	if (LOG)
 	{
 		fd = open(LOG_FILE, O_WRONLY | O_APPEND | O_CREAT, 0664);
 		if (fd == -1)

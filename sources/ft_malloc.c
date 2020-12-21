@@ -6,7 +6,7 @@
 /*   By: zamazzal <zouhir.amazzal@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 20:13:06 by zamazzal          #+#    #+#             */
-/*   Updated: 2020/12/19 04:45:30 by zamazzal         ###   ########.fr       */
+/*   Updated: 2020/12/21 18:22:55 by zamazzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void		*alloc_by_type(size_t size)
 		ptr = create_new_zone(size, type);
 		new_z = 1;
 	}
-	//malloc_log(ptr, new_z);
+	if (ptr && (DEBUG || LOG))
+		malloc_log(ptr, size);
 	return (ptr);
 }
 
@@ -36,7 +37,7 @@ void			*ft_malloc(size_t size)
 {
 	void			*ptr;
 
-	if (size < 1)
+	if (!size)
 		return (NULL);
 	ptr = alloc_by_type(size);
 	return (ptr);
@@ -52,13 +53,13 @@ void			*malloc(size_t size)
 	return (ptr);
 }
 
-void			*calloc(size_t nmemb, size_t size)
+void			*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
 	size_t	m_size;
 
 	pthread_mutex_lock(&g_lock);
-	if (nmemb <= 0 || size <= 0)
+	if (!nmemb || !size)
 		return (NULL);
 	m_size = size * nmemb;
 	if (m_size <= 0 || m_size / size != nmemb)

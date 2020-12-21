@@ -37,7 +37,7 @@ void	*ft_realloc(void *ptr, size_t size, int force)
 	return (new_ptr);
 }
 
-void	*reallocf(void *ptr, size_t size)
+void	*ft_reallocf(void *ptr, size_t size)
 {
 	void	*new_ptr;
 

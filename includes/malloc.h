@@ -35,6 +35,9 @@
 
 # define LOG_FILE "/var/tmp/malloc.log"
 
+# define DEBUG 1
+# define LOG 1
+
 typedef struct		s_block
 {
 	size_t			size;
@@ -55,8 +58,8 @@ pthread_mutex_t		g_lock;
 void				*malloc(size_t size);
 void				free(void *ptr);
 void				*realloc(void *ptr, size_t size);
-void				*calloc(size_t nmemb, size_t size);
-void				*reallocf(void *ptr, size_t size);
+void				*ft_calloc(size_t nmemb, size_t size);
+void				*ft_reallocf(void *ptr, size_t size);
 void				show_alloc_mem(void);
 void				show_alloc_mem_ex(void);
 

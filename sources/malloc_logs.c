@@ -81,13 +81,13 @@ void			malloc_log(void *ptr, int new_z)
 {
 	int fd;
 
-	if (ft_strequ(getenv("MALLOC_DEBUG"), "ON"))
+	if (DEBUG)
 	{
 		if (new_z)
 			log_created_zone(ptr, 1);
 		log_created_block(ptr, 1);
 	}
-	if (ft_strequ(getenv("MALLOC_LOG"), "ON"))
+	if (LOG)
 	{
 		fd = open(LOG_FILE, O_WRONLY | O_APPEND | O_CREAT, 0664);
 		if (fd == -1)

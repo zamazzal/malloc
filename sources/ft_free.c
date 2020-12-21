@@ -74,7 +74,8 @@ void			ft_free(void *ptr)
 	zone_tmp = ft_get_zone(ptr);
 	if (!zone_tmp || !block_tmp)
 		return ;
-	//free_log(ptr);
+	if (DEBUG || LOG)
+		free_log(ptr);
 	if (block_tmp->alc == IS_ALLOCATED)
 		block_tmp->alc = 0;
 	if (check_empty_zone(zone_tmp))
