@@ -46,14 +46,11 @@ static void		ft_putzone_type(int type, int fd)
 
 static void		log_created_zone(void *ptr, int fd)
 {
-	long long int	x;
 	t_zones			*zone_tmp;
 
-	x = (long long int)ptr;
-	x -= (sizeof(t_block) + sizeof(t_zones));
-	if (x <= 0)
+	zone_tmp = ft_get_zone(ptr);
+	if (!zone_tmp)
 		return ;
-	zone_tmp = (void*)ptr - (sizeof(t_block) + sizeof(t_zones));
 	ft_print_time(fd);
 	ft_putchar_fd(' ', fd);
 	ft_putstr_fd("+zone ", fd);
