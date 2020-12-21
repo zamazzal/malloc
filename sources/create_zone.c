@@ -39,7 +39,7 @@ static void		*ft_create_block(void *ptr, int type, size_t size, size_t len)
 	new_block->size = size;
 	new_block->alc = IS_ALLOCATED;
 	new_block->next = NULL;
-	new_ptr = ptr + sizeof(t_block) + sizeof(t_zones);
+	new_ptr = ptr + sizeof(t_zones) + sizeof(t_block);
 	return (new_ptr);
 }
 

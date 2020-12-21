@@ -36,18 +36,16 @@ static void		*ft_reserv_zone(t_block *block, size_t size)
 	return (ptr);
 }
 
-static void		*ft_appand_block(t_zones *zone
-, t_block *block, size_t size, long long x)
+static void		*ft_appand_block(t_block *block, size_t size)
 {
 	t_block		*new_block;
 	void		*ptr;
-
 	ptr = NULL;
-	new_block = (void*)zone + (x - (sizeof(t_block) + size));
+	new_block = (void*)block + sizeof(t_block) + block->size;
 	new_block->alc = IS_ALLOCATED;
 	new_block->size = size;
 	new_block->next = NULL;
-	ptr = new_block + sizeof(t_block);
+	ptr = (void*)new_block + sizeof(t_block);
 	block->next = new_block;
 	return (ptr);
 }
@@ -75,7 +73,7 @@ static void		*ft_create_block(t_zones *zone, t_block *block, size_t size)
 		x += sizeof(t_block) + old_block->size;
 		x += sizeof(t_block) + size;
 		if (x < (long long)zone->size)
-			return (ft_appand_block(zone, old_block, size, x));
+			return (ft_appand_block(old_block, size));
 	}
 	return (NULL);
 }

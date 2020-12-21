@@ -28,7 +28,7 @@ static void		*alloc_by_type(size_t size)
 		ptr = create_new_zone(size, type);
 		new_z = 1;
 	}
-	malloc_log(ptr, new_z);
+	//malloc_log(ptr, new_z);
 	return (ptr);
 }
 
@@ -58,13 +58,14 @@ void			*calloc(size_t nmemb, size_t size)
 	size_t	m_size;
 
 	pthread_mutex_lock(&g_lock);
-	m_size = size * nmemb;
-	if (nmemb <= 0 || size <= 0 || m_size <= 0)
+	if (nmemb <= 0 || size <= 0)
 		return (NULL);
-	if (m_size / size != nmemb)
+	m_size = size * nmemb;
+	if (m_size <= 0 || m_size / size != nmemb)
 		return (NULL);
 	ptr = ft_malloc(m_size);
-	ft_bzero(ptr, m_size);
+	if (ptr)
+		ft_bzero(ptr, m_size);
 	pthread_mutex_unlock(&g_lock);
 	return (ptr);
 }

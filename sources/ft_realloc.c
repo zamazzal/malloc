@@ -41,7 +41,9 @@ void	*reallocf(void *ptr, size_t size)
 {
 	void	*new_ptr;
 
+	pthread_mutex_lock(&g_lock);
 	new_ptr = ft_realloc(ptr, size, 1);
+	pthread_mutex_unlock(&g_lock);
 	return (new_ptr);
 }
 
